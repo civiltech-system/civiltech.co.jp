@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CivilTech | システムで業務改善</title>
+  <meta name="description" content="製造業の現場知識とソフトウェア技術を活かし、実用的なWebサービスを開発しています。CivilTechは、小規模・高品質な開発組織です。">
+
+  <!-- OGP -->
+  <meta property="og:title" content="CivilTech | システムで業務改善">
+  <meta property="og:description" content="製造業の現場知識とソフトウェア技術を活かし、実用的なWebサービスを開発しています。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://civiltech.co.jp">
+  <meta property="og:image" content="https://civiltech.co.jp/assets/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/civiltech-favicon.jpeg" type="image/jpeg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4XYSNXPKR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W4XYSNXPKR');
+  </script>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+          },
+          colors: {
+            accent: '#2563eb',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Vue.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+  <style>
+    body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+    .carousel-track { scroll-behavior: smooth; }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-track { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html"><img src="assets/civiltech-logo.png" alt="CivilTech" class="h-7"></a>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <a href="#services" class="hover:text-blue-600 transition-colors">Services</a>
+        <a href="#representative" class="hover:text-blue-600 transition-colors">About</a>
+        <a href="#philosophy" class="hover:text-blue-600 transition-colors">Philosophy</a>
+        <a href="company.html" class="hover:text-blue-600 transition-colors">Company</a>
+        <a href="contact.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors font-medium">Contact</a>
+      </nav>
+      <!-- Hamburger Button -->
+      <button id="menu-btn" class="md:hidden p-2 text-gray-600" aria-label="メニューを開く">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <nav class="flex flex-col px-6 py-4 gap-4 text-sm text-gray-600">
+        <a href="#services" class="hover:text-blue-600 transition-colors" onclick="closeMenu()">Services</a>
+        <a href="#representative" class="hover:text-blue-600 transition-colors" onclick="closeMenu()">About</a>
+        <a href="#philosophy" class="hover:text-blue-600 transition-colors" onclick="closeMenu()">Philosophy</a>
+        <a href="company.html" class="hover:text-blue-600 transition-colors">Company</a>
+        <a href="contact.html" class="bg-blue-600 text-white px-4 py-2 rounded-md text-center font-medium">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      iconOpen.classList.toggle('hidden', !isOpen);
+      iconClose.classList.toggle('hidden', isOpen);
+    });
+    function closeMenu() {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+  </script>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center pt-16 bg-white">
+    <div class="max-w-5xl mx-auto px-6 py-24">
+      <p class="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-6">CivilTech Co., Ltd.</p>
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        システムで<br>業務改善を。
+      </h1>
+      <p class="text-lg text-gray-500 leading-relaxed max-w-xl mb-10">
+        製造業の現場知識とソフトウェア技術を活かし、<br>
+        実用的なWebサービスを開発しています。
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="contact.html" class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium">
+          お問い合わせ
+          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="https://github.com/civiltech-system" target="_blank" rel="noopener noreferrer" class="inline-flex items-center border border-gray-300 text-gray-700 px-6 py-3 rounded-md hover:border-gray-500 transition-colors font-medium">
+          <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Carousel -->
+  <section id="services" class="py-24 bg-slate-50">
+    <div id="services-app" class="max-w-5xl mx-auto px-6">
+      <p class="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-3">Services</p>
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">展開サービス</h2>
+      <p class="text-gray-500 mb-10">現在運営中のサービスです。</p>
+
+      <div class="relative">
+        <!-- Prev Button -->
+        <button
+          @click="prev"
+          class="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-white border border-gray-200 rounded-full shadow-sm items-center justify-center hover:shadow-md transition-shadow"
+          :class="{ 'opacity-30 cursor-not-allowed': currentIndex === 0 }"
+          :disabled="currentIndex === 0"
+        >
+          <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+
+        <!-- Cards -->
+        <div
+          ref="track"
+          class="carousel-track flex gap-6 overflow-x-hidden select-none"
+          :class="dragActive ? 'cursor-grabbing' : 'cursor-grab'"
+          @mousedown="startDrag($event.clientX)"
+          @mousemove="moveDrag($event.clientX)"
+          @mouseup="endDrag"
+          @mouseleave="endDrag"
+          @touchstart.passive="startDrag($event.touches[0].clientX)"
+          @touchmove.passive="moveDrag($event.touches[0].clientX)"
+          @touchend="endDrag"
+        >
+          <div
+            v-for="(service, index) in services"
+            :key="index"
+            class="flex-shrink-0 bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            :style="cardWidthStyle"
+          >
+            <div class="h-36 flex items-center justify-center text-4xl font-bold" :style="{ backgroundColor: service.color + '15', color: service.color }">
+              {{ service.initial }}
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-gray-900 mb-1">{{ service.name }}</h3>
+              <p class="text-sm text-gray-500 mb-4 leading-relaxed">{{ service.description }}</p>
+              <a :href="service.url" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm text-blue-600 hover:underline font-medium" @click="handleLinkClick">
+                サイトを見る
+                <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Button -->
+        <button
+          @click="next"
+          class="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-white border border-gray-200 rounded-full shadow-sm items-center justify-center hover:shadow-md transition-shadow"
+          :class="{ 'opacity-30 cursor-not-allowed': currentIndex >= services.length - visibleCount }"
+          :disabled="currentIndex >= services.length - visibleCount"
+        >
+          <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dots -->
+      <div class="flex justify-center gap-2 mt-8">
+        <button
+          v-for="(_, i) in Array(Math.max(0, services.length - visibleCount + 1))"
+          :key="i"
+          @click="goTo(i)"
+          class="w-2 h-2 rounded-full transition-colors"
+          :class="currentIndex === i ? 'bg-blue-600' : 'bg-gray-300'"
+        ></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Representative -->
+  <section id="representative" class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-3">Representative</p>
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">代表紹介</h2>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <!-- Profile -->
+        <div>
+          <div class="flex items-center gap-5 mb-8">
+            <img src="assets/igadaruma-profile.png" alt="いがだるま" class="w-20 h-20 rounded-full object-cover border-2 border-gray-100">
+            <div>
+              <h3 class="text-xl font-bold text-gray-900">Takumi Igarashi</h3>
+              <p class="text-gray-500 text-sm mt-1">いがだるま</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 rounded-xl p-6 text-sm text-gray-600 leading-relaxed">
+            <p>製造業にて現役SEとして従事。</p>
+            <br>
+            <p>総務・経理業務を経験後、<br>工程管理の業務改善システムを開発し現在に至る。</p>
+            <br>
+            <p>現場運用を理解した上で、<br>実務に根差したシステム開発を行っています。</p>
+          </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div>
+          <h4 class="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-6">Tech Stack</h4>
+
+          <div class="space-y-6">
+            <div>
+              <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-3">Backend</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-red-50 text-red-700 text-sm rounded-md font-medium">Scala</span>
+                <span class="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm rounded-md font-medium">Python</span>
+                <span class="px-3 py-1.5 bg-purple-50 text-purple-700 text-sm rounded-md font-medium">PHP</span>
+                <span class="px-3 py-1.5 bg-green-50 text-green-700 text-sm rounded-md font-medium">Play Framework</span>
+                <span class="px-3 py-1.5 bg-teal-50 text-teal-700 text-sm rounded-md font-medium">FastAPI</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-3">Frontend</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-green-50 text-green-700 text-sm rounded-md font-medium">Vue 3</span>
+                <span class="px-3 py-1.5 bg-yellow-50 text-yellow-700 text-sm rounded-md font-medium">TailwindCSS</span>
+                <span class="px-3 py-1.5 bg-orange-50 text-orange-700 text-sm rounded-md font-medium">HTML / CSS</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-3">Infrastructure</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-orange-50 text-orange-700 text-sm rounded-md font-medium">Linux / Ubuntu</span>
+                <span class="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm rounded-md font-medium">Docker</span>
+                <span class="px-3 py-1.5 bg-green-50 text-green-700 text-sm rounded-md font-medium">Nginx</span>
+                <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-md font-medium">CloudPanel</span>
+                <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-md font-medium">MacOS / Windows</span>
+                <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-md font-medium">企業ネットワーク</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-3">AI / Creative</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-violet-50 text-violet-700 text-sm rounded-md font-medium">ローカル LLM</span>
+                <span class="px-3 py-1.5 bg-pink-50 text-pink-700 text-sm rounded-md font-medium">商用画像生成</span>
+                <span class="px-3 py-1.5 bg-violet-50 text-violet-700 text-sm rounded-md font-medium">Claude / ChatGPT</span>
+                <span class="px-3 py-1.5 bg-pink-50 text-pink-700 text-sm rounded-md font-medium">Stable Diffusion</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-3">Domain</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-md font-medium">データ分析</span>
+                <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-md font-medium">Webサービス設計</span>
+                <span class="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-md font-medium">SEO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section id="philosophy" class="py-24 bg-gray-900 text-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Philosophy</p>
+      <h2 class="text-3xl font-bold mb-12">企業理念</h2>
+
+      <div class="max-w-2xl">
+        <p class="text-2xl font-bold mb-8 leading-relaxed">システムで業務改善。</p>
+        <div class="space-y-4 text-gray-300 leading-relaxed">
+          <p>複雑な仕組みではなく、<br>現場で本当に使われる仕組みを重視します。</p>
+          <p>技術そのものではなく、<br>業務改善につながる価値を提供します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-blue-600 text-white">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">お問い合わせ</h2>
+      <p class="text-blue-100 mb-8">ご相談・ご依頼はお気軽にどうぞ。</p>
+      <a href="contact.html" class="inline-flex items-center bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-blue-50 transition-colors">
+        お問い合わせフォームへ
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-900 text-gray-400 text-sm">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="/" class="font-semibold text-gray-300 hover:text-white transition-colors">CivilTech Co., Ltd.</a>
+      <div class="flex items-center gap-6">
+        <a href="company.html" class="hover:text-gray-200 transition-colors">会社概要</a>
+        <a href="privacy.html" class="hover:text-gray-200 transition-colors">プライバシーポリシー</a>
+        <a href="contact.html" class="hover:text-gray-200 transition-colors">お問い合わせ</a>
+      </div>
+      <p>&copy; 2026 CivilTech. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Vue App: Services Carousel -->
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          currentIndex: 0,
+          visibleCount: 3,
+          dragStartX: 0,
+          dragDelta: 0,
+          dragActive: false,
+          dragging: false,
+          services: [
+            {
+              name: 'BeanAtlas',
+              description: 'コーヒー産地を地図で探せるサービス。産地・品種・フレーバーを視覚的に紹介。',
+              url: 'https://beanatlas.net',
+              color: '#c2762e',
+              initial: 'B',
+            },
+            {
+              name: 'Filmtools',
+              description: 'フィルムカメラ向けの変換ツール集。フィルム選びや露出計算をサポート。',
+              url: 'https://filmtools.jp',
+              color: '#374151',
+              initial: 'F',
+            },
+            {
+              name: '業務改善ブログ',
+              description: '現場目線の業務改善ノウハウを発信。ツール・仕組みづくりの実践記録。',
+              url: 'https://igaramu.com',
+              color: '#2563eb',
+              initial: 'I',
+            },
+            {
+              name: 'ランキングブログ',
+              description: 'さまざまなカテゴリのランキング情報を掲載するブログサイト。',
+              url: 'https://ranking-seven.com',
+              color: '#7c3aed',
+              initial: 'R',
+            },
+          ],
+        };
+      },
+      computed: {
+        cardWidthStyle() {
+          const gap = 24;
+          const totalGap = gap * (this.visibleCount - 1);
+          return { width: `calc(${100 / this.visibleCount}% - ${totalGap / this.visibleCount}px)` };
+        },
+      },
+      mounted() {
+        this.updateVisibleCount();
+        window.addEventListener('resize', this.updateVisibleCount);
+      },
+      unmounted() {
+        window.removeEventListener('resize', this.updateVisibleCount);
+      },
+      methods: {
+        updateVisibleCount() {
+          if (window.innerWidth < 640) {
+            this.visibleCount = 1;
+          } else if (window.innerWidth < 1024) {
+            this.visibleCount = 2;
+          } else {
+            this.visibleCount = 3;
+          }
+          this.currentIndex = Math.min(this.currentIndex, Math.max(0, this.services.length - this.visibleCount));
+          this.scrollTo(this.currentIndex);
+        },
+        prev() {
+          if (this.currentIndex > 0) {
+            this.currentIndex--;
+            this.scrollTo(this.currentIndex);
+          }
+        },
+        next() {
+          if (this.currentIndex < this.services.length - this.visibleCount) {
+            this.currentIndex++;
+            this.scrollTo(this.currentIndex);
+          }
+        },
+        goTo(i) {
+          this.currentIndex = i;
+          this.scrollTo(i);
+        },
+        scrollTo(index) {
+          const track = this.$refs.track;
+          if (!track) return;
+          const cardWidth = track.querySelector('div') ? track.querySelector('div').offsetWidth + 24 : 312;
+          track.scrollLeft = cardWidth * index;
+        },
+        startDrag(x) {
+          this.dragStartX = x;
+          this.dragDelta = 0;
+          this.dragActive = true;
+          this.dragging = false;
+        },
+        moveDrag(x) {
+          if (!this.dragActive) return;
+          this.dragDelta = x - this.dragStartX;
+          if (Math.abs(this.dragDelta) > 5) this.dragging = true;
+        },
+        endDrag() {
+          if (!this.dragActive) return;
+          this.dragActive = false;
+          if (this.dragging) {
+            if (this.dragDelta < -50) this.next();
+            else if (this.dragDelta > 50) this.prev();
+          }
+          setTimeout(() => { this.dragging = false; }, 0);
+        },
+        handleLinkClick(e) {
+          if (this.dragging) e.preventDefault();
+        },
+      },
+    }).mount('#services-app');
+  </script>
+</body>
+</html>

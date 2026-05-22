@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会社概要 | CivilTech</title>
+  <meta name="description" content="CivilTech（シビルテック）の会社概要ページです。">
+
+  <!-- OGP -->
+  <meta property="og:title" content="会社概要 | CivilTech">
+  <meta property="og:description" content="CivilTech（シビルテック）の会社概要ページです。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://civiltech.co.jp/company.html">
+  <meta property="og:image" content="https://civiltech.co.jp/assets/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/civiltech-favicon.jpeg" type="image/jpeg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html"><img src="assets/civiltech-logo.png" alt="CivilTech" class="h-7"></a>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <a href="index.html#services" class="hover:text-blue-600 transition-colors">Services</a>
+        <a href="index.html#representative" class="hover:text-blue-600 transition-colors">About</a>
+        <a href="index.html#philosophy" class="hover:text-blue-600 transition-colors">Philosophy</a>
+        <a href="company.html" class="hover:text-blue-600 transition-colors">Company</a>
+        <a href="contact.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors font-medium">Contact</a>
+      </nav>
+      <!-- Hamburger Button -->
+      <button id="menu-btn" class="md:hidden p-2 text-gray-600" aria-label="メニューを開く">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <nav class="flex flex-col px-6 py-4 gap-4 text-sm text-gray-600">
+        <a href="index.html#services" class="hover:text-blue-600 transition-colors">Services</a>
+        <a href="index.html#representative" class="hover:text-blue-600 transition-colors">About</a>
+        <a href="index.html#philosophy" class="hover:text-blue-600 transition-colors">Philosophy</a>
+        <a href="company.html" class="hover:text-blue-600 transition-colors">Company</a>
+        <a href="contact.html" class="bg-blue-600 text-white px-4 py-2 rounded-md text-center font-medium">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      iconOpen.classList.toggle('hidden', !isOpen);
+      iconClose.classList.toggle('hidden', isOpen);
+    });
+  </script>
+
+  <!-- Content -->
+  <main class="min-h-screen pt-28 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-3">Company</p>
+      <h1 class="text-3xl font-bold text-gray-900 mb-12">会社概要</h1>
+
+      <table class="w-full text-sm">
+        <tbody class="divide-y divide-gray-100">
+          <tr class="py-4">
+            <th class="py-5 pr-8 text-left font-medium text-gray-500 w-36 align-top">会社名</th>
+            <td class="py-5 text-gray-900">有限会社シビルテック（CivilTech Co., Ltd.）</td>
+          </tr>
+          <tr>
+            <th class="py-5 pr-8 text-left font-medium text-gray-500 align-top">代表者</th>
+            <td class="py-5 text-gray-900">五十嵐 巧（Takumi Igarashi）</td>
+          </tr>
+          <tr>
+            <th class="py-5 pr-8 text-left font-medium text-gray-500 align-top">住所</th>
+            <td class="py-5 text-gray-900">日本, 大阪府</td>
+          </tr>
+          <tr>
+            <th class="py-5 pr-8 text-left font-medium text-gray-500 align-top">事業内容</th>
+            <td class="py-5 text-gray-900 leading-relaxed">
+              Webサービスの開発・運営<br>
+              業務改善システムの設計・開発<br>
+              ソフトウェア受託開発
+            </td>
+          </tr>
+          <tr>
+            <th class="py-5 pr-8 text-left font-medium text-gray-500 align-top">URL</th>
+            <td class="py-5">
+              <a href="https://civiltech.co.jp" class="text-blue-600 hover:underline">https://civiltech.co.jp</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-900 text-gray-400 text-sm">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="/" class="font-semibold text-gray-300 hover:text-white transition-colors">CivilTech Co., Ltd.</a>
+      <div class="flex items-center gap-6">
+        <a href="company.html" class="hover:text-gray-200 transition-colors">会社概要</a>
+        <a href="privacy.html" class="hover:text-gray-200 transition-colors">プライバシーポリシー</a>
+        <a href="contact.html" class="hover:text-gray-200 transition-colors">お問い合わせ</a>
+      </div>
+      <p>&copy; 2026 CivilTech. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
