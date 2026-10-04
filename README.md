@@ -30,6 +30,7 @@ https://civiltech.co.jp
 ```
 public/
   index.html       # トップページ
+  works.html       # 実績・代表の経歴・技術領域
   contact.html     # お問い合わせ
   company.html     # 会社概要
   privacy.html     # プライバシーポリシー
