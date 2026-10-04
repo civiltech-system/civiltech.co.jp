@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実績・経歴・技術 | CivilTech</title>
+    <meta name="description" content="代表・五十嵐巧の業務経験と工程管理システムの開発経験、CivilTechの自社サービス実績、業務改善を支える技術をご紹介します。">
+
+    <!-- OGP -->
+    <meta property="og:title" content="実績・経歴・技術 | CivilTech">
+    <meta property="og:description" content="代表・五十嵐巧の業務経験と工程管理システムの開発経験、CivilTechの自社サービス実績、業務改善を支える技術をご紹介します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://civiltech.co.jp/works.html">
+    <meta property="og:image" content="https://civiltech.co.jp/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/civiltech-favicon.jpeg" type="image/jpeg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy':      '#0F172A',
+                        'navy-soft': '#1E293B',
+                        'accent':    '#38BDF8',
+                        'border':    '#E2E8F0',
+                        'muted':     '#94A3B8',
+                        'body':      '#334155',
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans', 'Noto Sans JP', 'sans-serif'],
+                    },
+                    maxWidth: { 'site': '1280px' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'IBM Plex Sans', 'Noto Sans JP', sans-serif; background: #FFFFFF; }
+        #mobile-menu { display: none; }
+        #mobile-menu.open { display: block; }
+        html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+        a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #0284C7; outline-offset: 4px; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    </style>
+</head>
+<body class="text-body">
+
+<!-- HEADER -->
+<header class="fixed top-0 w-full z-50 border-b border-border bg-white/90 backdrop-blur-md">
+    <div class="flex justify-between items-center px-6 md:px-16 h-16 max-w-site mx-auto">
+        <a href="index.html">
+            <img src="assets/civiltech-logo.png" alt="CivilTech" class="h-7 w-auto">
+        </a>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a href="index.html#research"   class="text-sm text-body hover:text-navy transition-colors">できること</a>
+            <a href="index.html#projects"   class="text-sm text-body hover:text-navy transition-colors">運営サービス</a>
+            <a href="works.html" aria-current="page" class="text-sm text-navy font-medium">実績</a>
+            <a href="company.html"          class="text-sm text-body hover:text-navy transition-colors">会社概要</a>
+        </nav>
+        <a href="contact.html" class="hidden md:inline-flex items-center px-5 py-2 bg-navy text-white text-sm font-medium hover:bg-navy-soft transition-colors">
+            お問い合わせ
+        </a>
+        <button id="menu-btn" class="md:hidden p-2 text-body" aria-label="メニューを開く" aria-controls="mobile-menu" aria-expanded="false">
+            <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="border-t border-border bg-white">
+        <nav class="flex flex-col px-6 py-4 gap-4 text-sm text-body">
+            <a href="index.html#research"   onclick="closeMenu()" class="hover:text-navy transition-colors">できること</a>
+            <a href="index.html#projects"   onclick="closeMenu()" class="hover:text-navy transition-colors">運営サービス</a>
+            <a href="works.html" aria-current="page" class="text-sm text-navy font-medium">実績</a>
+            <a href="company.html" class="hover:text-navy transition-colors">会社概要</a>
+            <a href="contact.html" class="mt-2 inline-block bg-navy text-white px-5 py-2 text-center font-medium">お問い合わせ</a>
+        </nav>
+    </div>
+</header>
+<script>
+    const menuBtn    = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen   = document.getElementById('icon-open');
+    const iconClose  = document.getElementById('icon-close');
+    menuBtn.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+    });
+    function closeMenu() {
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'メニューを開く');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+    }
+</script>
+
+<main class="pt-16">
+    <div class="max-w-[1040px] mx-auto px-6 md:px-16">
+        <section class="pt-12 md:pt-16 pb-10 md:pb-12">
+            <p class="text-xs text-slate-500 mb-5">実績・経歴・技術</p>
+            <h1 class="text-3xl md:text-4xl font-semibold text-navy tracking-tight">現場経験を、使える仕組みに。</h1>
+            <p class="mt-5 text-sm md:text-base leading-relaxed max-w-2xl">総務・経理、製造業のシステム開発、自社サービスの運営。<br class="hidden md:block">実務と開発の両方の経験をもとに、業務改善を支援します。</p>
+        </section>
+
+        <section id="career" class="border-t border-border py-10 md:py-12 grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+            <h2 class="text-lg font-semibold text-navy">代表の経歴</h2>
+            <div class="min-w-0">
+                <div class="flex items-center gap-4 mb-5">
+                    <img src="assets/igadaruma-profile.png" alt="代表のプロフィールアイコン" width="56" height="56" class="w-14 h-14 object-contain" loading="lazy">
+                    <div>
+                        <p class="text-xs text-slate-500 mb-1">有限会社シビルテック 代表</p>
+                        <h3 class="text-xl font-semibold text-navy">五十嵐 巧 <span class="text-xs font-normal text-slate-500 ml-2">Takumi Igarashi</span></h3>
+                    </div>
+                </div>
+                <p class="text-sm leading-relaxed">総務・経理業務を経験後、製造業のSEとして工程管理の業務改善システムを開発。現場の流れを理解し、実際の運用に合うシステムを設計しています。</p>
+                <ol class="mt-6 space-y-3 text-sm">
+                    <li class="flex gap-3"><span class="text-sky-700 text-xs pt-0.5" aria-hidden="true">01</span><span>総務・経理の実務経験</span></li>
+                    <li class="flex gap-3"><span class="text-sky-700 text-xs pt-0.5" aria-hidden="true">02</span><span>製造業の工程管理、購買業務</span></li>
+                    <li class="flex gap-3"><span class="text-sky-700 text-xs pt-0.5" aria-hidden="true">03</span><span>社内で工程管理システムを独自開発</span></li>
+                    <li class="flex gap-3"><span class="text-sky-700 text-xs pt-0.5" aria-hidden="true">04</span><span>企業SEへ異動、基幹システムのリプレイスやデバイス管理など担当</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="experience" class="border-t border-border py-10 md:py-12">
+            <h2 class="text-lg font-semibold text-navy mb-6">開発実績</h2>
+            <div class="grid sm:grid-cols-2 gap-4 md:gap-5">
+                <article class="block border border-border bg-white p-6">
+                    <div class="flex items-start justify-between gap-3 mb-5">
+                        <p class="text-xs text-slate-500">代表の業務経験 / 製造業</p>
+                    </div>
+                    <div class="h-12 flex items-center mb-5">
+                        <img src="assets/civiltech-logo.png" alt="CivilTech" class="max-h-10 max-w-[200px] w-auto object-contain" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-semibold text-navy">工程管理システム</h3>
+                    <p class="text-sm leading-relaxed mt-2">現場の業務や判断基準を整理し、工程管理の業務改善システムを独自開発。</p>
+                </article>
+                <a href="https://beanatlas.net" target="_blank" rel="noopener noreferrer" class="block border border-border bg-white p-6 hover:border-sky-400 transition-colors group">
+                    <div class="flex items-start justify-between gap-3 mb-5">
+                        <p class="text-xs text-slate-500">自社サービス / 情報整理・地図表示</p><span class="material-symbols-outlined text-slate-400 group-hover:text-sky-700" style="font-size:16px" aria-hidden="true">open_in_new</span>
+                    </div>
+                    <div class="h-12 flex items-center mb-5">
+                        <img src="assets/beanatlas_logo.png" alt="BeanAtlas" class="max-h-10 max-w-[200px] w-auto object-contain" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-semibold text-navy">BeanAtlas</h3>
+                    <p class="text-sm leading-relaxed mt-2">コーヒーの産地・品種・フレーバー情報を整理し、地図で探せるサービス。</p>
+                    <span class="sr-only">（新しいタブで開きます）</span>
+                </a>
+                <a href="https://filmtools.jp" target="_blank" rel="noopener noreferrer" class="block border border-border bg-white p-6 hover:border-sky-400 transition-colors group">
+                    <div class="flex items-start justify-between gap-3 mb-5">
+                        <p class="text-xs text-slate-500">自社サービス / 業務計算ツール</p><span class="material-symbols-outlined text-slate-400 group-hover:text-sky-700" style="font-size:16px" aria-hidden="true">open_in_new</span>
+                    </div>
+                    <div class="h-12 flex items-center mb-5">
+                        <img src="assets/filmtools_logo.png" alt="Filmtools" class="max-h-10 max-w-[200px] w-auto object-contain" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-semibold text-navy">Filmtools</h3>
+                    <p class="text-sm leading-relaxed mt-2">軟包装フィルムの計算・変換ツール。現場の専門知識を、すぐ使える機能に。</p>
+                    <span class="sr-only">（新しいタブで開きます）</span>
+                </a>
+                <a href="https://hakarun.civiltech.co.jp/" target="_blank" rel="noopener noreferrer" class="block border border-border bg-white p-6 hover:border-sky-400 transition-colors group">
+                    <div class="flex items-start justify-between gap-3 mb-5">
+                        <p class="text-xs text-slate-500">自社サービス / 外部連携・分析・AI</p><span class="material-symbols-outlined text-slate-400 group-hover:text-sky-700" style="font-size:16px" aria-hidden="true">open_in_new</span>
+                    </div>
+                    <div class="h-12 flex items-center mb-5">
+                        <img src="assets/hakarun-logo-horizontal-white.png" alt="サイトはかるん" class="max-h-10 max-w-[200px] w-auto object-contain" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-semibold text-navy">サイトはかるん</h3>
+                    <p class="text-sm leading-relaxed mt-2">Google連携でサイト分析を自動化。月次レポートとAIの改善アドバイスを提供。</p>
+                    <span class="sr-only">（新しいタブで開きます）</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="technology" class="border-t border-border py-10 md:py-12 grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+            <h2 class="text-lg font-semibold text-navy">技術領域</h2>
+            <div class="min-w-0">
+                <dl class="divide-y divide-border text-sm">
+                    <div class="grid sm:grid-cols-[128px_1fr] gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0">
+                        <dt class="font-medium text-navy">フロントエンド</dt>
+                        <dd class="leading-relaxed"><p>TypeScript / Vue.js / Scala.js</p></dd>
+                    </div>
+                    <div class="grid sm:grid-cols-[128px_1fr] gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0">
+                        <dt class="font-medium text-navy">バックエンド</dt>
+                        <dd class="leading-relaxed"><p>Scala / Python / PHP</p><p>Play Framework / FastAPI</p></dd>
+                    </div>
+                    <div class="grid sm:grid-cols-[128px_1fr] gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0">
+                        <dt class="font-medium text-navy">データベース</dt>
+                        <dd class="leading-relaxed"><p>PostgreSQL / MySQL / SQLServer / SQLite</p></dd>
+                    </div>
+                    <div class="grid sm:grid-cols-[128px_1fr] gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0">
+                        <dt class="font-medium text-navy">インフラ</dt>
+                        <dd class="leading-relaxed"><p>Linux / Ubuntu / Docker</p><p>Nginx / CloudPanel</p></dd>
+                    </div>
+                    <div class="grid sm:grid-cols-[128px_1fr] gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0">
+                        <dt class="font-medium text-navy">クラウド</dt>
+                        <dd class="leading-relaxed"><p>GCP / GitHub Actions / CloudFlare</p></dd>
+                    </div>
+                    <div class="grid sm:grid-cols-[128px_1fr] gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0">
+                        <dt class="font-medium text-navy">AI</dt>
+                        <dd class="leading-relaxed"><p>GPT / Claude / GeminiAPI</p></dd>
+                    </div>
+                    <div class="grid sm:grid-cols-[128px_1fr] gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0">
+                        <dt class="font-medium text-navy">BIツール</dt>
+                        <dd class="leading-relaxed"><p>click / Motionborad</p></dd>
+                    </div>
+                </dl>
+                <div class="flex flex-wrap gap-x-5 gap-y-2 mt-8 text-sm">
+                    <a href="https://github.com/civiltech-system" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline underline-offset-4">GitHub<span class="sr-only">（新しいタブで開きます）</span></a>
+                    <a href="https://igaramu.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline underline-offset-4">業務改善ブログ<span class="sr-only">（新しいタブで開きます）</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="consultation" class="border-t border-border py-10 md:py-12 mb-6 grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+            <h2 class="text-lg font-semibold text-navy">ご相談</h2>
+            <div>
+                <p class="text-sm leading-relaxed mb-5">要件がまとまっていなくても大丈夫です。<br>困っている業務の整理から、開発・運用の進め方までご相談ください。</p>
+                <a href="contact.html" class="inline-flex items-center gap-2 px-5 py-3 bg-navy text-white text-sm font-medium hover:bg-navy-soft transition-colors">お問い合わせ<span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">arrow_forward</span></a>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="py-10 border-t border-border bg-white">
+    <div class="px-6 md:px-16 max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <a href="index.html">
+            <img src="assets/civiltech-logo.png" alt="CivilTech" class="h-6 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        </a>
+        <nav class="flex flex-wrap justify-center gap-6 text-xs text-muted">
+            <a href="index.html#research"   class="hover:text-navy transition-colors">できること</a>
+            <a href="index.html#projects"   class="hover:text-navy transition-colors">運営サービス</a>
+            <a href="works.html" class="hover:text-navy transition-colors">実績</a>
+            <a href="company.html"  class="hover:text-navy transition-colors">会社概要</a>
+            <a href="privacy.html"  class="hover:text-navy transition-colors">プライバシーポリシー</a>
+            <a href="contact.html"  class="hover:text-navy transition-colors">お問い合わせ</a>
+        </nav>
+        <p class="text-xs text-muted">&copy; 2026 CivilTech. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
